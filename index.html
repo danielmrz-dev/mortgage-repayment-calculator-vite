@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A web Mortgage Repayment Calculator Application">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+	<title>Frontend Mentor | Mortgage repayment calculator</title>
+
+	<link rel="stylesheet" href="src/styles/style.css">
+
+	<script type="module" src="src/ts/main.ts" defer></script>
+</head>
+<body>
+
+	<main class="calculator">
+
+		<section class="calculator__container">
+
+			<header class="calculator__header">
+				<h1 class="calculator__title">Mortgage Calculator</h1>
+				<button class="calculator__clear-btn" tabindex="1">Clear All</button>
+			</header>
+
+			<form class="calculator__form">
+
+				<label for="mortgage-amount" class="calculator__form-labels parent">
+					<p>Mortgage Amount</p>
+					<input type="number" name="mortgage-amount" id="mortgage-amount" class="padding" tabindex="2">
+					<span class="calculator__aside-left currency-icon">£</span>
+					<p class="error-msg">This field is required</p>
+				</label>
+				
+				<label for="mortgage-term" class="calculator__form-labels parent">
+					<p>Mortgage Term</p>
+					<input type="number" min="5" max="35" name="mortgage-term" id="mortgage-term" tabindex="3">
+					<span class="calculator__aside-right years-icon">years</span>
+					<p class="error-msg">This field is required</p>
+				</label>
+				
+				<label for="interest-rate" class="calculator__form-labels parent">
+					<p>Interest Rate</p>
+					<input type="text" name="interest-rate" id="interest-rate" tabindex="4">
+					<span class="calculator__aside-right percentage-icon">%</span>
+					<p class="error-msg">This field is required</p>
+				</label>
+				
+				<div class="calculator__mortgage-type parent">
+					<p>Mortgage Type</p>
+					<input type="radio" name="mortgage-type" id="mortgage-type-repayment">
+					<label for="mortgage-type-repayment" tabindex="5" id="repayment">
+						<span>Repayment</span>
+					</label>
+					<input type="radio" name="mortgage-type" id="mortgage-type-interest">
+					<label for="mortgage-type-interest" tabindex="6" id="interest">
+						<span>Interest Only</span>
+						<p class="error-msg">This field is required</p>
+					</label>
+				</div>
+				
+				<button class="calculator__submit" type="submit" tabindex="7">
+					<img src="src/assets/images/icon-calculator.svg" alt="calculator icon">
+					Calculate Repayments
+				</button>
+				
+			</form>
+
+		</section>
+
+		<section class="calculator__results">
+
+			<div class="calculator__results-empty">
+				<img src="src/assets/images/illustration-empty.svg"
+					alt="A report, a pen, a dollar bill, a few coins and a calculator">
+				<h2 class="calculator__results-title">Results shown here</h2>
+				<p class="calculator__results-paragraph">
+					Complete the form and click “calculate repayments” to see what
+					your monthly repayments would be.
+				</p>
+			</div>      
+			
+			<div class="calculator__results-complete">
+				<h2 class="calculator__results-complete-title">Your results</h2>
+				<p class="calculator__results-complete-paragraph">
+					Your results are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.
+				</p>
+
+				<div class="calculator__final-result">
+					<h3 class="calculator__final-result-title">Your monthly repayments</h3>
+					<span class="calculator__final-result-monthly-value" id="monthly-value">£1,797.74</span>
+					<hr>
+					<h3 class="calculator__final-result-title" id="interest-text">Total you'll repay over the term</h3>
+					<span class="calculator__final-result-total-value" id="total-value">£539,322.94</span>
+				</div>
+
+			</div>
+
+		</section>
+	</main>
+
+	<!-- <div class="attribution">
+		Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+		Coded by <a href="#">danielmrz-dev</a>.
+	</div> -->
+</body>
+</html>

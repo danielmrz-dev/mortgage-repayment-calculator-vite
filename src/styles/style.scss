@@ -1,0 +1,356 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "Jakarta-Variable";
+    src: url(../assets/fonts/PlusJakartaSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "Jakarta-Italic";
+    src: url(../assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "Jakarta-Medium";
+    src: url(../assets/fonts/static/PlusJakartaSans-Medium.ttf);
+}
+
+@font-face {
+    font-family: "Jakarta-Bold";
+    src: url(../assets/fonts/static/PlusJakartaSans-Bold.ttf);
+}
+
+$Lime: #d7da2f;
+$Lime-opacity: #d7da2f2d;
+$Red: #d73328;
+$White: #ffffff;
+$Slate-100: #e3f3fd;
+$Slate-100-opacity: #e3f3fdc6;
+$Slate-300: #9abed5;
+$Slate-500: #6b94a8;
+$Slate-700: #4e6e7e;
+$Slate-800: #133040;
+$Slate-850: #0e2431;
+$Slate-900: #122f3f;
+$Jakarta-Variable: "Jakarta-Variable", sans-serif;
+$Jakarta-Italic: "Jakarta-Italic", sans-serif;
+$Jakarta-Bold: "Jakarta-Bold", sans-serif;
+$Jakarta-Medium: "Jakarta-Medium", sans-serif;
+
+@mixin flexDirection($direction, $gap) {
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+}
+
+@mixin spanPosition($left, $right, $radius) {
+    position: absolute;
+    padding: 0.85rem 1rem;
+    font-weight: 700;
+    bottom: 1px;
+    left: $left;
+    right: $right;
+    background-color: $Slate-100-opacity;
+    color: $Slate-700;
+    border-radius: $radius;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    @include flexDirection(column, 0);
+    font-family: $Jakarta-Variable;
+    .calculator {
+        @include flexDirection(column, 0);
+        &__container {
+            margin: 2rem 1.5rem;
+            @include flexDirection(column, 1.75rem);
+        }
+        &__header {
+            @include flexDirection(column, 0.5rem);
+        }
+        &__title {
+            color: $Slate-900;
+            font-weight: 800;
+        }
+        &__clear-btn {
+            font-family: $Jakarta-Medium;
+            width: fit-content;
+            font-size: 1rem;
+            color: $Slate-500;
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid $Slate-500;
+            cursor: pointer;
+        }
+        &__form {
+            @include flexDirection(column, 1.6rem);
+        }
+        &__form-labels {
+            @include flexDirection(column, 0.9rem);
+            font-weight: 500;
+            input[type="number"],
+            input[type="text"] {
+                width: 100%;
+                padding: 0.78rem;
+                border-radius: 5px;
+                font-family: $Jakarta-Bold;
+                font-size: 1.1rem;
+                border: 1px solid $Slate-300;
+                cursor: pointer;
+            }
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                // margin: 0;
+            }
+            input[type="number"].padding {
+                padding: 0.78rem 3.25rem;
+            }
+            input[type="number"]:focus,
+            input[type="text"]:focus {
+                outline: none;
+                border: 1px solid $Lime;
+            }
+            input[type="number"]:focus ~ .calculator__aside-left,
+            input[type="text"]:focus ~ .calculator__aside-left,
+            input[type="text"]:focus ~ .calculator__aside-right,
+            input[type="number"]:focus ~ .calculator__aside-right {
+                background-color: $Lime;
+                color: $Slate-900;
+            }
+            position: relative;
+        }
+        &__aside-left {
+            @include spanPosition(1px, none, 5px 0 0 5px);
+        }
+        &__aside-right {
+            @include spanPosition(none, 0.5px, 0 5px 5px 0);
+        }
+        &__mortgage-type {
+            @include flexDirection(column, 0.75rem);
+            label {
+                @include flexDirection(row, 1rem);
+                border: 1px solid $Slate-700;
+                padding: 0.75rem 3.5rem;
+                border-radius: 5px;
+                position: relative;
+                font-weight: 600;
+                font-size: 1.1rem;
+                cursor: pointer;
+                &:focus {
+                    border-color: $Lime;
+                    outline: none;
+                }
+            }
+            input[type="radio"] {
+                display: none;
+            }
+            label::before {
+                content: "";
+                position: absolute;
+                background-color: transparent;
+                width: 18px;
+                height: 18px;
+                left: 17px;
+                top: 50%;
+                transform: translateY(-50%);
+                border: 2px solid $Slate-500;
+                border-radius: 50%;
+            }
+            input[type="radio"]:checked + label::before {
+                background-color: $Lime;
+                border-color: $Lime;
+                box-shadow: inset 0 0 0 3px $White;
+            }
+            input[type="radio"]:checked + label {
+                background-color: $Lime-opacity;
+                border-color: $Lime;
+            }
+        }
+        &__submit {
+            @include flexDirection(row, 0.75rem);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            font-family: $Jakarta-Bold;
+            font-size: 1.125rem;
+            background-color: $Lime;
+            border-radius: 40px;
+            border: none;
+            transition: opacity 0.2s ease, scale 0.2s ease;
+            cursor: pointer;
+            &:hover {
+                opacity: 0.6;
+                scale: 1.01;
+            }
+        }
+        &__results {
+            line-height: 1.375;
+            padding: 1.8rem 1.35rem;
+            background-color: $Slate-800;
+            color: $White;
+        }
+        &__results-empty {
+            @include flexDirection(column, 1.1rem);
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        .hide-empty-results {
+            display: none;
+        }
+        .show-results {
+            display: flex;
+        }
+        &__results-complete {
+            @include flexDirection(column, 1.1rem);
+            text-align: start;
+            display: none;
+        }
+        &__results-complete-title {
+            font-size: 1.5rem;
+        }
+        &__results-complete-paragraph {
+            line-height: 1.5;
+            color: $Slate-100;
+            opacity: .8;
+        }
+        &__final-result {
+            @include flexDirection(column, .5rem);
+            background-color: $Slate-850;
+            padding: 1.5rem 1rem;
+            border-top: 4px solid $Lime;
+            border-radius: 7px;
+            margin-top: 5px;
+            hr {
+                margin-bottom: 10px;
+            }
+        }
+        &__final-result-title {
+            color: $Slate-100;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+        &__final-result-monthly-value {
+            letter-spacing: 1px;
+            color: $Lime;
+            font-size: 2.45rem;
+            font-weight: 700;
+        }
+        &__final-result-total-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+    }
+}
+
+.error-msg {
+    opacity: 0;
+    position: absolute;
+    bottom: -18px;
+    left: 3px;
+    color: $Red;
+    font-size: 0.75rem;
+}
+
+.error-msg-active {
+    opacity: 1;
+}
+
+.error-state-input {
+    border-color: $Red !important;
+}
+
+.error-state-icon {
+    background-color: $Red !important;
+    color: $White !important;
+}
+
+
+
+//= MEDIA QUERIES
+
+@media screen and (min-width: 778px) {
+    body {
+        @include flexDirection(column, 0);
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: $Slate-100-opacity;
+        .calculator {
+            @include flexDirection(row, 0);
+            background-color: $White;
+            border-radius: 15px;
+            overflow: hidden;
+            max-width: 1000px;
+            &__container {
+                @include flexDirection(column, 2.5rem);
+                margin: 0;
+                padding: 2.25rem;
+                width: 50%;
+            }
+            &__header {
+                @include flexDirection(row, 0.5rem);
+                justify-content: space-between;
+            }
+            &__form {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem 1.5rem;
+            }
+            &__form-labels {
+                @include flexDirection(column, 0.9rem);
+                &:nth-of-type(1) {
+                    grid-area: 1 / 1 / 2 / 3;
+                }
+                &:nth-of-type(2) {
+                    grid-area: 2 / 1 / 3 / 2;
+                }
+            }
+            &__mortgage-type {
+                margin-top: -10px;
+                margin-bottom: 10px;
+                grid-area: 3 / 1 / 4 / 3;
+            }
+            &__submit {
+                grid-area: 4 / 1 / 5 / 3;
+                max-width: 75%;
+            }
+            &__results {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50%;
+                border-radius: 0 0 0 70px;
+            }
+            &__results-empty {
+                @include flexDirection(column, 1.1rem);
+                text-align: center;
+                align-items: center;
+                padding: 1rem;
+                // display: none; // Nenhum ou block
+            }
+            &__results-complete {
+                @include flexDirection(column, 1.1rem);
+                padding: .5rem 1.25rem;
+                display: none;
+            }
+            &__final-result {
+                @include flexDirection(column, .5rem);
+                margin-top: 1rem;
+                padding: 1.85rem;
+                hr {
+                    margin-block: 22px;
+                }
+            }
+            &__final-result-monthly-value {
+                font-size: 3.5rem;
+            }
+        }
+    }
+}
