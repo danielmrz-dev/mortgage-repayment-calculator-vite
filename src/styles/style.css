@@ -79,8 +79,14 @@ body .calculator__form-labels input[type=text] {
   border: 1px solid #9abed5;
   cursor: pointer;
 }
+body .calculator__form-labels input[type=number] {
+  -webkit-appearance: none;
+          appearance: none;
+  -moz-appearance: textfield;
+}
 body .calculator__form-labels input[type=number]::-webkit-outer-spin-button,
 body .calculator__form-labels input[type=number]::-webkit-inner-spin-button {
+  appearance: none;
   -webkit-appearance: none;
 }
 body .calculator__form-labels input[type=number].padding {

@@ -103,10 +103,14 @@ body {
                 border: 1px solid $Slate-300;
                 cursor: pointer;
             }
+            input[type="number"] {
+                appearance: none;
+                -moz-appearance: textfield;
+            }
             input[type="number"]::-webkit-outer-spin-button,
             input[type="number"]::-webkit-inner-spin-button {
+                appearance: none;
                 -webkit-appearance: none;
-                // margin: 0;
             }
             input[type="number"].padding {
                 padding: 0.78rem 3.25rem;
