@@ -85,7 +85,7 @@ if (form) {
                 monthlyPayment = monthlyPayment;
                 monthlyValueElement!.innerHTML = `£ ${monthlyPaymentFormatted}`;
                 totalValueElement!.innerHTML = `£ ${interestOnlyValueFormatted}`;
-                finalResultText.textContent = "Total of interest you'll pay over the term";
+                finalResultText.textContent = "Total amount of interest you'll pay over the term";
             }
 
         } else {
