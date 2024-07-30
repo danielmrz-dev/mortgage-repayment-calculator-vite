@@ -34,8 +34,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://danielmrz-dev.github.io/mortgage-repayment-calculator-vite/)
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/mortgage-repayment-calculator-built-w-vite-sass-and-typescript-azFNDfmvQx)
+- Live Site URL: [Click here](https://danielmrz-dev.github.io/mortgage-repayment-calculator-vite/)
 
 ## My process
 
